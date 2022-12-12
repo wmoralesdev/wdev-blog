@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "dev",
+            "problemMatcher": [],
+            "label": "npm: dev",
+            "detail": "next",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
