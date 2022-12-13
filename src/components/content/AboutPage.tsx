@@ -11,6 +11,8 @@ import classNames from 'classnames';
 import { IconType } from 'react-icons/lib';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExperienceModel } from '@models/experience';
+import Spotify from 'react-spotify-embed';
+import useWindowSize from '@hooks/useWindowSize';
 
 interface LogoContainerProps {
     colStart: string;
@@ -253,12 +255,16 @@ const Workplace: FC<{ experience: ExperienceModel, index: number }> = ({ experie
 
 const AboutPage: FC<AboutPageProps> = ({ experience }) => {
     const [experienceId, logoId] = [useId(), useId()];
+    const { width } = useWindowSize();
 
     return (
-        <div>
+        <div className="mb-10">
             <Me />
-            <div className="mt-10 w-full flex flex-col gap-2">
-                <h1 className="gradient padding text-3xl"><span>These are the places I&apos;ve worked at</span></h1>
+            <div className="mt-10">
+                <h1 className="text-3xl"><span>Let&apos;s go step by step</span></h1>
+            </div>
+            <div className="mt-2 w-full flex flex-col gap-2">
+                <h1 className="gradient padding text-3xl"><span>These are the places I&apos;ve worked at 🏢</span></h1>
                 <div className="w-full pb-2 flex flex-wrap gap-2 justify-between items-center text-lg my-1 md:text-xl">
                     <p className="inline-flex gap-2 items-center gradient padding rounded-full bg-light py-1 px-2 cursor-pointer cust-transition hover:bg-primary hover:gradient-inverted">
                         <span>3+</span>
@@ -278,12 +284,16 @@ const AboutPage: FC<AboutPageProps> = ({ experience }) => {
                 </AnimatePresence>
             </div>
             <div className="w-full mt-10">
-                <h1 className="gradient padding text-3xl mb-4"><span>I&apos;ve experience with these technologies</span></h1>
+                <h1 className="gradient padding text-3xl mb-4"><span>I love and I&apos;ve worked with these technologies 💻</span></h1>
                 <div className="grid grid-cols-6 grid-rows-12 gap-2 md:grid-rows-4">
                     <AnimatePresence>
                         { logoFormats.map((logo, index) => <LogoContainer {...logo} index={index} key={`${logoId}-${index}`} />) }
                     </AnimatePresence>
                 </div>
+            </div>
+            <div className="w-full mt-10">
+                <h1 className="gradient padding text-3xl mb-4"><span>My coding playlist 💿</span></h1>
+                <Spotify width="100%" wide={width <= 768} link="https://open.spotify.com/playlist/31QY6EFWL6jzgxFreQwybj?si=ffaf7f36b73b436a&pt=009319dffb77eab8a79527fd62c58a52" />
             </div>
         </div>
     );
