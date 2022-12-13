@@ -6,19 +6,34 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { ImageContainer } from '@components/utils';
 import { FieldErrors, useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { signGuestbook } from '@services/guestbook';
 import { toast } from 'react-hot-toast';
+import { GuestbookModel } from '@models/guestbook';
+import { Request } from '@models/request';
 
 interface GuestbookSign {
     body: string;
 }
 
 const Input: FC = () => {
+    const queryClient = useQueryClient();
     const { data: session } = useSession();
-    const { mutateAsync } = useMutation(signGuestbook);
+    const { mutateAsync, isLoading } = useMutation({
+        mutationFn: signGuestbook,
+        onSuccess: (newSign) => {
+            queryClient.setQueryData(['signs'], (oldSigns: Request<GuestbookModel[]>) => {
+                if (!oldSigns) return { data: [newSign.data] };
+
+                return {
+                    ...oldSigns,
+                    data: [newSign.data, ...oldSigns.data],
+                };
+            });
+        },
+    });
     const {
-        register, handleSubmit, watch,
+        register, handleSubmit, watch, reset,
     } = useForm<GuestbookSign>();
     const watchBody = watch('body');
 
@@ -28,6 +43,8 @@ const Input: FC = () => {
             success: 'Your sign was saved!',
             error: 'There was something wrong with your request 😥',
         });
+
+        reset();
     };
 
     const onInvalid = (errors: FieldErrors<GuestbookSign>) => toast.error(errors.body.message);
@@ -49,7 +66,7 @@ const Input: FC = () => {
                         {watchBody?.length ?? 0}
                         /512
                     </span>
-                    <button type="submit" className="btn">Sign</button>
+                    <button type="submit" className="btn" disabled={isLoading}>Sign</button>
                 </div>
             </div>
         </form>

@@ -16,7 +16,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
                 <link rel="icon" href="/logo.white.svg" />
             </Head>
             <AnimatePresence
-                exitBeforeEnter
+                mode="wait"
                 initial={false}
                 onExitComplete={() => typeof window !== 'undefined' && window.scrollTo(0, 0)}
             >

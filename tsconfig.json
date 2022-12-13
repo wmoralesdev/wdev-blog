@@ -56,7 +56,7 @@
             "@utils/*": [
                 "src/utils/*"
             ],
-            "@sanity/*": [
+            "@sanity-local/*": [
                 "src/sanity/*"
             ],
             "@prisma-local/*": [

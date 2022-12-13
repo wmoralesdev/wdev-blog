@@ -5,9 +5,11 @@ import NavbarContextProvider from '@ctx/navbar';
 
 const NavbarDesktop: FC<PropsWithChildren> = ({ children }) => (
     <NavbarContextProvider>
-        <nav className="sticky top-0 left-0 w-full py-4">
-            { children }
-        </nav>
+        <div className="mx-auto w-[50vw] sticky z-50 top-0 left-0">
+            <nav className="w-full py-4 bg-neutral">
+                { children }
+            </nav>
+        </div>
     </NavbarContextProvider>
 );
 

@@ -23,7 +23,7 @@ const NavigationButton: FC = () => {
 
 const NavbarMobile: FC<PropsWithChildren> = ({ children }) => (
     <NavbarContextProvider>
-        <nav className="relative top-0 left-0 w-full py-4 overflow-hidden">
+        <nav className="sticky z-50 top-0 left-0 w-full py-4 overflow-hidden bg-neutral">
             <div className="w-full flex items-center justify-start">
                 <NavigationButton />
             </div>

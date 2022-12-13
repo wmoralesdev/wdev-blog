@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NextPage } from 'next';
-import { Me } from '@components/info';
 import { Layout } from '@components/layout';
 import Head from 'next/head';
-import { toast } from 'react-hot-toast';
+import { InitialPageContent } from '@components/content';
+import client from '@sanity-local/client';
+import { postQuery } from '@sanity-local/queries';
 
-const InitialPage: NextPage = () => {
-    useEffect(() => {
-        toast.success('ola');
-    }, []);
+const InitialPage: NextPage = () => (
+    <Layout>
+        <Head>
+            <title>Home</title>
+        </Head>
+        <InitialPageContent />
+    </Layout>
+);
 
-    return (
-        <>
-            <Head>
-                <title>Home</title>
-            </Head>
-            <Layout>
-                <Me />
-            </Layout>
-        </>
-    );
-};
+export async function getStaticProps() {
+    const posts = await client.fetch(postQuery);
+
+    return { props: { posts } };
+}
 
 export default InitialPage;
