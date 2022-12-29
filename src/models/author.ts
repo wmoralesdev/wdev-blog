@@ -1,32 +1,7 @@
-import { RefModel, SanityModel, TypedModel } from './common';
+import { BlockContentModel, SanityModel } from './common';
 
-// export interface BioModel {
-//     _key: string;
-//     _type: string;
-//     children: Child[];
-//     markDefs: any[];
-//     style: string;
-// }
-
-export interface AuthModel extends SanityModel {
-    image: TypedModel & {
-        asset: TypedModel & RefModel;
-    };
+export interface AuthorModel extends SanityModel {
+    image: string;
     name: string;
-    bio: string;
+    bio: BlockContentModel[];
 }
-
-// interface RootObject {
-//     _key: string;
-//     _type: string;
-//     children: Child[];
-//     markDefs: any[];
-//     style: string;
-// }
-
-// interface Child {
-//     _key: string;
-//     _type: string;
-//     marks: any[];
-//     text: string;
-// }

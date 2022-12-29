@@ -1,4 +1,4 @@
-import { Navbar } from '@components/navigation';
+import { Footer, Navbar } from '@components/navigation';
 import React, { FC, PropsWithChildren } from 'react';
 import { motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
@@ -15,7 +15,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
     const isMutating = useIsMutating() > 0;
 
     return (
-        <div className="mx-auto flex flex-col justify-start items-center px-4
+        <div className="mx-auto flex flex-col justify-start items-center px-4 min-h-screen
         md:max-w-screen-md"
         >
             {
@@ -45,6 +45,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
                     { children }
                 </div>
             </motion.main>
+            <Footer />
         </div>
     );
 };

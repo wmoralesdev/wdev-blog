@@ -4,19 +4,24 @@ import { Layout } from '@components/layout';
 import Head from 'next/head';
 import { InitialPageContent } from '@components/content';
 import client from '@sanity-local/client';
-import { postQuery } from '@sanity-local/queries';
+import { threeTopPostsQuery } from '@sanity-local/queries';
+import { PostModel } from '@models/post';
 
-const InitialPage: NextPage = () => (
+interface InitialPageProps {
+    posts: PostModel[];
+}
+
+const InitialPage: NextPage<InitialPageProps> = ({ posts }) => (
     <Layout>
         <Head>
             <title>Home</title>
         </Head>
-        <InitialPageContent />
+        <InitialPageContent posts={posts} />
     </Layout>
 );
 
 export async function getStaticProps() {
-    const posts = await client.fetch(postQuery);
+    const posts = await client.fetch<PostModel[]>(threeTopPostsQuery);
 
     return { props: { posts } };
 }

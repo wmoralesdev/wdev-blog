@@ -24,7 +24,7 @@ const variants = {
 const Sign: FC<SignProps> = ({ sign, index }) => {
     const queryClient = useQueryClient();
     const { data: session } = useSession();
-    const { email } = session.user;
+    const { email } = session?.user || {};
     const { mutateAsync } = useMutation({
         mutationFn: deleteSign,
         onSuccess: (deletedSign) => {

@@ -19,3 +19,15 @@ export interface LocatedStringModel extends TypedModel {
     en: string;
     es: string;
 }
+
+export interface BlockContentModel extends TypedModel {
+    children: BlockContentModel[];
+    marks: string[];
+    text: string;
+    markDefs?: string[];
+    style?: string;
+    language?: string;
+    code?: string;
+    highlightedLines?: number[];
+    url?: string;
+}

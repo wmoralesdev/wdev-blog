@@ -1,11 +1,6 @@
 import React, { FC, useId } from 'react';
 import { Me } from '@components/info';
 import { AboutPageProps } from '@pages/about';
-import {
-    SiExpress, SiDotnet, SiDocker, SiNextdotjs, SiPostgresql,
-    SiMysql, SiMicrosoftsqlserver, SiMongodb, SiReact, SiNestjs, SiTailwindcss,
-    SiGraphql, SiGit, SiAmazonaws, SiTypescript,
-} from 'react-icons/si';
 import { BiBuildings } from 'react-icons/bi';
 import classNames from 'classnames';
 import { IconType } from 'react-icons/lib';
@@ -13,6 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ExperienceModel } from '@models/experience';
 import Spotify from 'react-spotify-embed';
 import useWindowSize from '@hooks/useWindowSize';
+import logoFormats from '@assets/techs';
 
 interface LogoContainerProps {
     colStart: string;
@@ -21,10 +17,12 @@ interface LogoContainerProps {
     rowSpan?: string;
     Logo: IconType;
     legend: string;
+    index: number;
+    href: string;
     size?: 'sm' | 'lg' | 'wide';
     aspect?: 'square' | 'auto';
-    index: number;
     orientation?: 'vertical' | 'horizontal';
+    isHighlight?: boolean;
 }
 
 const variants = {
@@ -34,11 +32,11 @@ const variants = {
 };
 
 const LogoContainer: FC<LogoContainerProps> = ({
-    colStart, rowStart, colSpan, rowSpan, legend, Logo, index, size = 'sm', aspect = 'square', orientation = 'vertical',
+    colStart, rowStart, colSpan, rowSpan, legend, Logo, index, href, size = 'sm', aspect = 'square', orientation = 'vertical', isHighlight = false,
 }) => (
-    <motion.div
+    <motion.a
         className={classNames(
-            'bg-light rounded-lg p-4 flex gap-2 cust-transition group cursor-default hover:bg-primary',
+            'rounded-lg p-4 flex gap-2 cust-transition cursor-pointer hover:border-4',
             orientation === 'vertical' ? 'flex-col items-center justify-center' : 'flex-row justify-between items-center md:flex-col md:items-center md:justify-center',
             colStart,
             rowStart,
@@ -46,12 +44,15 @@ const LogoContainer: FC<LogoContainerProps> = ({
             rowSpan,
             // eslint-disable-next-line no-nested-ternary
             aspect === 'square' ? 'aspect-square' : size !== 'wide' ? 'aspect-auto md:aspect-square' : 'aspect-auto',
+            isHighlight ? 'bg-primary hover:border-white' : 'bg-light hover:border-primary',
         )}
         initial="hidden"
         animate="enter"
         exit="exit"
         variants={variants}
         transition={{ type: 'linear', duration: 0.3, delay: index * 0.1 }}
+        href={href}
+        target="_blank"
     >
         <Logo
             className={classNames(
@@ -62,167 +63,16 @@ const LogoContainer: FC<LogoContainerProps> = ({
             )}
         />
         <h1 className={classNames(
-            'gradient padding group-hover:gradient-inverted',
+            'padding',
+            isHighlight ? 'gradient-inverted' : 'gradient',
             orientation === 'vertical' ? 'mt-auto' : 'mt-0 md:mt-auto',
             size === 'lg' ? 'text-xl' : 'text-base',
         )}
         >
             <span>{legend}</span>
         </h1>
-    </motion.div>
+    </motion.a>
 );
-
-const logoFormats = [
-    {
-        colStart: 'col-start-1 md:col-start-1',
-        rowStart: 'row-start-1 md:row-start-1',
-        Logo: SiDotnet,
-        colSpan: 'col-span-3 md:col-span-2',
-        rowSpan: 'row-span-3 md:row-span-2',
-        legend: '.NET',
-        size: 'lg' as const,
-    },
-    {
-        colStart: 'col-start-4 md:col-start-3',
-        rowStart: 'md:row-start-1',
-        Logo: SiNextdotjs,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'NextJS',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-4',
-        rowStart: 'row-start-2 md:row-start-1',
-        Logo: SiExpress,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'ExpressJS',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-5',
-        rowStart: 'row-start-4 md:row-start-1',
-        Logo: SiMysql,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'MySQL',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-4 md:col-start-6',
-        rowStart: 'row-start-6 md:row-start-1',
-        Logo: SiDocker,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-3 md:row-span-1',
-        legend: 'Docker',
-        aspect: 'auto' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-3',
-        rowStart: 'row-start-7 md:row-start-2',
-        Logo: SiMongodb,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'MongoDb',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-4',
-        rowStart: 'row-start-3 md:row-start-2',
-        Logo: SiReact,
-        colSpan: 'col-span-3 md:col-span-2',
-        rowSpan: 'row-span-3 md:row-span-2',
-        legend: 'ReactJS',
-        size: 'lg' as const,
-    },
-    {
-        colStart: 'col-start-4 md:col-start-6',
-        rowStart: 'row-start-[10] md:row-start-2',
-        Logo: SiPostgresql,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'PostgreSQL',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-1',
-        rowStart: 'row-start-[12] md:row-start-3',
-        Logo: SiTailwindcss,
-        colSpan: 'col-span-6 md:col-span-2',
-        rowSpan: 'row-span-1',
-        legend: 'Tailwindcss',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-        size: 'wide' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-3',
-        rowStart: 'row-start-6 md:row-start-3',
-        Logo: SiMicrosoftsqlserver,
-        legend: 'MSSQL',
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-4 md:col-start-6',
-        rowStart: 'row-start-8 md:row-start-3',
-        Logo: SiNestjs,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'NestJS',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-1',
-        rowStart: 'row-start-[8] md:row-start-4',
-        Logo: SiGit,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-3 md:row-span-1',
-        legend: 'Git',
-        size: 'wide' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-2',
-        rowStart: 'row-start-5 md:row-start-4',
-        Logo: SiTypescript,
-        colSpan: 'col-span-3 md:col-span-2',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'TypeScript',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-        size: 'wide' as const,
-    },
-    {
-        colStart: 'col-start-4',
-        rowStart: 'row-start-[11] md:row-start-4',
-        Logo: SiGraphql,
-        colSpan: 'col-span-3 md:col-span-1',
-        rowSpan: 'row-span-1 md:row-span-1',
-        legend: 'GraphQL',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-    },
-    {
-        colStart: 'col-start-1 md:col-start-5',
-        rowStart: 'row-start-[11] md:row-start-4',
-        Logo: SiAmazonaws,
-        colSpan: 'col-span-3 md:col-span-2',
-        rowSpan: 'row-span-1',
-        legend: 'AWS',
-        aspect: 'auto' as const,
-        orientation: 'horizontal' as const,
-        size: 'wide' as const,
-    },
-];
 
 const Workplace: FC<{ experience: ExperienceModel, index: number }> = ({ experience, index }) => (
     <motion.div
@@ -284,7 +134,10 @@ const AboutPage: FC<AboutPageProps> = ({ experience }) => {
                 </AnimatePresence>
             </div>
             <div className="w-full mt-10">
-                <h1 className="gradient padding text-3xl mb-4"><span>I love and I&apos;ve worked with these technologies 💻</span></h1>
+                <h1 className="gradient padding text-3xl mb-4">
+                    <span>I love and I&apos;ve worked with these technologies 💻</span>
+                    <small className="text-lg md:text-xl">and this website uses the highlighted ones!</small>
+                </h1>
                 <div className="grid grid-cols-6 grid-rows-12 gap-2 md:grid-rows-4">
                     <AnimatePresence>
                         { logoFormats.map((logo, index) => <LogoContainer {...logo} index={index} key={`${logoId}-${index}`} />) }
@@ -300,6 +153,3 @@ const AboutPage: FC<AboutPageProps> = ({ experience }) => {
 };
 
 export default AboutPage;
-
-// eslint-disable-next-line max-len
-// if ((colSpan === undefined && rowSpan === undefined) || colSpan.last === rowSpan.last) aspect-square : aspect-auto

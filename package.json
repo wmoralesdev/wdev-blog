@@ -17,8 +17,10 @@
         "@sanity/client": "^3.4.1",
         "@tailwindcss/typography": "^0.5.8",
         "@tanstack/react-query": "^4.19.1",
+        "aws-sdk": "^2.1282.0",
         "axios": "^1.2.1",
         "classnames": "^2.3.2",
+        "eslint": "^8.29.0",
         "framer-motion": "^7.6.19",
         "i18next": "^22.1.4",
         "next": "^13.0.6",
@@ -33,7 +35,9 @@
         "react-hot-toast": "^2.4.0",
         "react-i18next": "^12.1.1",
         "react-icons": "^4.7.1",
-        "react-spotify-embed": "^1.0.4"
+        "react-refractor": "^2.1.7",
+        "react-spotify-embed": "^1.0.4",
+        "refractor": "^4.8.0"
     },
     "devDependencies": {
         "@types/node": "18.11.11",
@@ -41,7 +45,6 @@
         "@typescript-eslint/eslint-plugin": "^5.45.1",
         "@typescript-eslint/parser": "^5.45.1",
         "autoprefixer": "^10.4.13",
-        "eslint": "^8.29.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.0.0",
         "eslint-config-next": "^13.0.6",
