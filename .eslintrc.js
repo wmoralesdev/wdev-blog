@@ -1,0 +1,26 @@
+module.exports = {
+    "extends": [
+        "airbnb",
+        "airbnb-typescript"
+    ],
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "ignorePatterns": ["*.html"],
+    "rules": {
+        "indent": ["error", 4],
+        "@typescript-eslint/indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "react/function-component-definition": ["error", {
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+        }],
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/no-unused-prop-types": "off",
+        "react/no-array-index-key": "off"
+    }
+}

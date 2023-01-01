@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC, useId} from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { AiFillGithub } from 'react-icons/ai';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -12,14 +12,16 @@ import Input from './Input';
 
 const Login: FC = () => (
     <button type="button" className="btn" onClick={() => signIn('github')}>
-        Sign in to leave a comment
+        Sign in to leave a comment or reply
         <AiFillGithub />
     </button>
 );
 
 const Container: FC = () => {
     const { query } = useRouter();
-    const { data: comments } = useQuery(['post-comments', query.slug as string], () => getComments(query.slug as string));
+    const { data: comments } = useQuery(['post-comments', query.slug as string], () => getComments(query.slug as string), {
+        refetchOnWindowFocus: false,
+    });
     const queryClient = useQueryClient();
     const { data: session } = useSession();
 
@@ -56,7 +58,7 @@ const Container: FC = () => {
             ) : <Login /> }
             {
                 comments && comments.data && comments.data.map(
-                    (comment) => <Comment {...comment} />,
+                        (comment) => <Comment key={comment.id} {...comment} />,
                 )
             }
         </div>
