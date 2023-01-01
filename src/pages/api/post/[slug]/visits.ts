@@ -6,7 +6,7 @@ const handler = NextConnect()
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const slug = req.query.slug as string;
 
-        const views = await prisma.views.findFirst({
+        const views = await prisma.view.findFirst({
             where: { slug },
         });
 

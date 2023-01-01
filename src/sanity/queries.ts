@@ -29,6 +29,18 @@ export const postFields = `
     'miniatureImage': miniature.asset->url,
 `;
 
+export const resumedPostFields = `
+    _id,
+    _createdAt,
+    _updatedAt,
+    categories[]->{
+        title
+    },
+    title,
+    slug,
+    'coverImage': mainImage.asset->url
+`;
+
 export const postsSlugs = `
     *[_type == "post"] {
         'slug': slug.current
@@ -37,15 +49,7 @@ export const postsSlugs = `
 
 export const mostRecentPostsQuery = `
     *[_type == "post"] | order(_createdAt desc) {
-        _id,
-        _createdAt,
-        _updatedAt,
-        categories[]->{
-            title
-        },
-        title,
-        slug,
-        'coverImage': mainImage.asset->url,
+        ${resumedPostFields}
     }
 `;
 
@@ -58,6 +62,12 @@ export const threeTopPostsQuery = `
 export const postBySlugQuery = `
     *[_type == "post" && slug.current == $slug][0] {
         ${postFields}
+    }
+`;
+
+export const postsByTitleQuery = `
+    *[_type == "post" && title match $title] {
+        ${resumedPostFields}
     }
 `;
 

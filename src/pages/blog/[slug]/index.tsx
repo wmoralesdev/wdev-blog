@@ -10,6 +10,7 @@ import { Block } from '@components/block';
 import { useQuery } from '@tanstack/react-query';
 import { trackPostVisit } from '@services/tracking';
 import { HiEye } from 'react-icons/hi';
+import { Container } from '@components/comment';
 
 interface BlogPostPageProps {
     post: PostModel;
@@ -53,6 +54,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                 <div className="w-full flex flex-col gap-4">
                     <Block body={post.body} />
                 </div>
+                <Container />
             </div>
         </Layout>
     );

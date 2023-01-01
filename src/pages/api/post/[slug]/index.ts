@@ -6,7 +6,7 @@ const handler = NextConnect()
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const slug = req.query.slug as string;
 
-        const postViews = await prisma.views.upsert({
+        const postViews = await prisma.view.upsert({
             where: { slug },
             update: {
                 count: {
