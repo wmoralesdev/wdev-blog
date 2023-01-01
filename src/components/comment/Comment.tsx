@@ -50,7 +50,9 @@ const Comment: FC<CommentProps> = ({
             </p>
             {
                 replies && replies.length > 0 ? (
-                    <div className="ml-auto w-[90%] flex flex-col gap-2">
+                    <div className="ml-auto w-[90%] flex flex-col gap-2
+                    md:w-[91%]"
+                    >
                         { replies.map((reply) => <Reply {...reply} />)}
                     </div>
                 ) : null
