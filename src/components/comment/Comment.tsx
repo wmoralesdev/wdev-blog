@@ -5,7 +5,7 @@ import { createReply } from '@services/comment';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 import { useRouter } from 'next/router';
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import Author from './Author';
 import Input from './Input';
 import Reply from './Reply';

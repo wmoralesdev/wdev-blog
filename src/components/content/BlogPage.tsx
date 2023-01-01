@@ -1,9 +1,8 @@
-import { ImageContainer } from '@components/utils';
 import { PostModel } from '@models/post';
 import client from '@sanity-local/client';
 import { postsByTitleQuery } from '@sanity-local/queries';
 import { useMutation } from '@tanstack/react-query';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiSearch } from 'react-icons/fi';
 

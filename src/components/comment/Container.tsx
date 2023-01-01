@@ -19,9 +19,11 @@ const Login: FC = () => (
 
 const Container: FC = () => {
     const { query } = useRouter();
-    const { data: comments } = useQuery(['post-comments', query.slug as string], () => getComments(query.slug as string));
     const queryClient = useQueryClient();
     const { data: session } = useSession();
+    const { data: comments } = useQuery(['post-comments', query.slug as string], () => getComments(query.slug as string), {
+        refetchOnWindowFocus: false,
+    });
 
     const onCommentSuccess = (newComment: AxiosResponse<CommentModel, any>) => {
         queryClient.setQueryData(['post-comments', query.slug as string], (oldComments: Request<CommentModel[]>) => {

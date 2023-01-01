@@ -6,7 +6,7 @@ import Author from './Author';
 interface ReplyProps extends ReplyModel {}
 
 const Reply: FC<ReplyProps> = ({
-    id, author, body, created_at,
+    author, body, created_at,
 }) => {
     const createdAt = useFormattedDate(created_at);
 
