@@ -1,70 +1,65 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL_DEV")
-    relationMode = "prisma"
+  provider     = "mysql"
+  url          = env("DATABASE_URL_DEV")
+  relationMode = "prisma"
 }
 
 model User {
-    email           String      @id @db.VarChar(128)
-    name            String      @db.VarChar(128)
-    avatar          String      @db.Text
-    registered_at   DateTime    @default(now()) @db.DateTime(6)
-    signs           Guestbook[]
-    comments        Comment[]
-    responses       Reply[]
+  email         String      @id @db.VarChar(128)
+  name          String      @db.VarChar(128)
+  avatar        String      @db.Text
+  registered_at DateTime    @default(now()) @db.DateTime(6)
+  signs         Guestbook[]
+  comments      Comment[]
+  responses     Reply[]
 }
 
 model Guestbook {
-    id              BigInt      @id @default(autoincrement())
-    author          User        @relation(fields: [authorId], references: [email])
-    authorId        String
-    body            String      @db.VarChar(256)
+  id         BigInt   @id @default(autoincrement())
+  authorId   String
+  body       String   @db.VarChar(256)
+  created_at DateTime @default(now()) @db.DateTime(6)
+  updated_at DateTime @default(now()) @db.DateTime(6)
+  author     User     @relation(fields: [authorId], references: [email])
 
-    created_at      DateTime    @default(now()) @db.DateTime(6)
-    updated_at      DateTime    @default(now()) @db.DateTime(6)
-
-    @@index([authorId])
+  @@index([authorId])
 }
 
 model View {
-    slug            String      @id @db.VarChar(128)
-    count           BigInt      @default(1)
-	@@map("Views")
+  slug  String @id @db.VarChar(128)
+  count BigInt @default(1)
+
+  @@map("Views")
 }
 
 model Comment {
-    id              BigInt      @id @default(autoincrement())
-    post            String      @db.VarChar(128)
-    author          User        @relation(fields: [authorId], references: [email])
-    authorId        String
-    body            String      @db.VarChar(512)
-    replies         Reply[]
+  id         BigInt   @id @default(autoincrement())
+  post       String   @db.VarChar(128)
+  authorId   String
+  body       String   @db.VarChar(512)
+  created_at DateTime @default(now()) @db.DateTime(6)
+  updated_at DateTime @default(now()) @db.DateTime(6)
+  author     User     @relation(fields: [authorId], references: [email])
+  replies    Reply[]
 
-    created_at      DateTime    @default(now()) @db.DateTime(6)
-    updated_at      DateTime    @default(now()) @db.DateTime(6)
-
-    @@index([authorId])
+  @@index([authorId])
 }
 
 model Reply {
-    id              BigInt      @id @default(autoincrement())
-    comment         Comment     @relation(fields: [commentId], references: [id])
-    commentId       BigInt
-    author          User        @relation(fields: [authorId], references: [email])
-    authorId        String
-    body            String      @db.VarChar(512)
+  id         BigInt   @id @default(autoincrement())
+  commentId  BigInt
+  authorId   String
+  body       String   @db.VarChar(512)
+  created_at DateTime @default(now()) @db.DateTime(6)
+  updated_at DateTime @default(now()) @db.DateTime(6)
+  comment    Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  author     User     @relation(fields: [authorId], references: [email])
 
-    created_at      DateTime    @default(now()) @db.DateTime(6)
-    updated_at      DateTime    @default(now()) @db.DateTime(6)
-
-    @@index([commentId])
-    @@index([authorId])
-	@@map("Response")
+  @@index([commentId])
+  @@index([authorId])
+  @@map("Response")
 }

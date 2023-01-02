@@ -55,6 +55,8 @@ const Input: FC<InputProps> = ({
 
     const onInvalid = (errors: FieldErrors<DefaultTextInput>) => toast.error(errors.body.message);
 
+    if (!session) return null;
+
     return (
         <div className="w-full">
             { isReply ? null : <h2 className="text-2xl mb-2 md:text-3xl"><span>Leave a comment here</span></h2> }

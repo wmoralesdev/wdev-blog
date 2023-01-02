@@ -14,11 +14,9 @@ const PostCard: FC<{ post: PostModel }> = ({ post }) => {
         refetchOnWindowFocus: false,
     });
 
-    console.log(res);
-
     return (
         <Link
-            href={`/blog/posts/${post.slug.current}`}
+            href={`/blog/${post.slug.current}`}
             className="aspect-square relative rounded-lg border-4 border-primary p-4 bg-light h-60 flex flex-col justify-end text-right cust-transition group
             bg-cover
             hover:border-white
