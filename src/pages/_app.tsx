@@ -5,9 +5,13 @@ import { SessionProvider } from 'next-auth/react';
 import Head from 'next/head';
 import { AnimatePresence } from 'framer-motion';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
+    const { isFallback } = useRouter();
     const [queryClient] = useState(() => new QueryClient());
+
+    if (isFallback) return <div>Loading...</div>;
 
     return (
         <>

@@ -33,7 +33,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                 <title>{ title }</title>
                 <meta
                     property="og:image"
-                    content={`${process.env.NEXT_PUBLIC_HOST_URL}/api/og?slug=${slug}`}
+                    content={post.metaImage}
                 />
             </Head>
             <div className="max-w-screen-md w-screen text-left px-4 flex flex-col gap-y-4">

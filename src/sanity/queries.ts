@@ -27,6 +27,7 @@ export const postFields = `
     slug,
     'coverImage': mainImage.asset->url,
     'miniatureImage': miniature.asset->url,
+    'metaImage': meta.asset->url,
 `;
 
 export const resumedPostFields = `

@@ -7,6 +7,7 @@ export interface PostModel extends SanityModel, TimestampedModel {
     categories: CategoryModel[];
     coverImage: string;
     miniatureImage: string;
+    metaImage: string;
     slug: SlugModel;
     title: string;
 }
