@@ -36,6 +36,9 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                     property="og:image"
                     content={post.metaImage}
                 />
+                <meta name="description" content={post.description} />
+                <meta name="keywords" content="wmorales, dev, reactjs, nodejs, .net" />
+                <meta name="author" content={author.name} />
             </Head>
             <div className="max-w-screen-md w-screen text-left px-4 flex flex-col gap-y-4">
                 <h1 className="gradient padding text-3xl md:text-5xl"><span>{ title }</span></h1>

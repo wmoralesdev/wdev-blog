@@ -10,6 +10,7 @@ export interface PostModel extends SanityModel, TimestampedModel {
     metaImage: string;
     slug: SlugModel;
     title: string;
+    description: string;
 }
 
 interface SlugModel {

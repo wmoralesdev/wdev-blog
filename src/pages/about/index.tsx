@@ -14,7 +14,10 @@ export interface AboutPageProps {
 const AboutPage: NextPage<AboutPageProps> = ({ experience }) => (
     <Layout>
         <Head>
-            <title>About me</title>
+            <title>wmoralesdev - About me</title>
+            <meta name="description" content="Here's all the information about my education, professional experience and some of my hobbies!" />
+            <meta name="keywords" content="wmorales, dev, reactjs, nodejs, .net, experience, education" />
+            <meta name="author" content="Walter Morales" />
         </Head>
         <AboutPageContent experience={experience} />
     </Layout>

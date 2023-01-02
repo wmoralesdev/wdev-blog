@@ -39,7 +39,7 @@ const Summary: FC<SummaryProps> = ({ posts }) => {
 
     return (
         <div className="w-full flex flex-col mt-10 gap-8">
-            <h1 className="text-2xl gradient padding md:text-3xl"><span>Most recent posts</span></h1>
+            <h4 className="text-2xl gradient padding md:text-3xl"><span>Most recent posts</span></h4>
             <div>
                 {posts.map((post, index) => <PostCard key={`${id}-${index}`} post={post} />)}
             </div>

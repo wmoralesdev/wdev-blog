@@ -14,7 +14,10 @@ interface InitialPageProps {
 const InitialPage: NextPage<InitialPageProps> = ({ posts }) => (
     <Layout>
         <Head>
-            <title>Home</title>
+            <title>wmoralesdev - Home</title>
+            <meta name="description" content="FullStack JS & .NET Developer, building next gen web applications using a little bit of everything. Never stopped learning and never will!" />
+            <meta name="keywords" content="wmorales, dev, reactjs, nodejs, .net" />
+            <meta name="author" content="Walter Morales" />
         </Head>
         <InitialPageContent posts={posts} />
     </Layout>

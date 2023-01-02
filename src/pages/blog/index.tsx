@@ -14,7 +14,10 @@ interface BlogPageProps {
 const BlogPage: NextPage<BlogPageProps> = ({ posts }) => (
     <Layout>
         <Head>
-            <title>Blog</title>
+            <title>wmoralesdev - Blog</title>
+            <meta name="description" content="Want to know tips and tutorials about web topics? Here's the place for that, look at all my blog entries maybe something helps you out!" />
+            <meta name="keywords" content="wmorales, dev, blog" />
+            <meta name="author" content="Walter Morales" />
         </Head>
         <BlogPageContent posts={posts} />
     </Layout>
