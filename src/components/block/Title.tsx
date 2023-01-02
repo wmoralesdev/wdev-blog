@@ -6,19 +6,19 @@ interface TitleProps extends PropsWithChildren {
 }
 
 const TitleH1: FC<PropsWithChildren> = ({ children }) => (
-    <h1 className="gradient padding text-3xl md:text-5xl"><span>{ children }</span></h1>
+    <h3 className="gradient padding text-3xl md:text-5xl"><span>{ children }</span></h3>
 );
 
 const TitleH2: FC<PropsWithChildren> = ({ children }) => (
-    <h2 className="gradient padding text-2xl md:text-4xl"><span>{ children }</span></h2>
+    <h4 className="gradient padding text-2xl md:text-4xl"><span>{ children }</span></h4>
 );
 
 const TitleH3: FC<PropsWithChildren> = ({ children }) => (
-    <h3 className="gradient padding text-xl md:text-3xl"><span>{ children }</span></h3>
+    <h5 className="gradient padding text-xl md:text-3xl"><span>{ children }</span></h5>
 );
 
 const TitleH4: FC<PropsWithChildren> = ({ children }) => (
-    <h4 className="gradient padding text-lg md:text-2xl"><span>{ children }</span></h4>
+    <h6 className="gradient padding text-lg md:text-2xl"><span>{ children }</span></h6>
 );
 
 const Title: FC<TitleProps> = ({ children, style }) => {

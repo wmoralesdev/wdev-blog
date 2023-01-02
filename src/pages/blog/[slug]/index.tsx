@@ -45,7 +45,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                 <div className="w-full flex flex-wrap justify-between">
                     <div className="w-1/2 inline-flex items-center gap-2">
                         <ImageContainer src={author.image} alt={author.name} className="rounded-full border-2 border-primary w-12 aspect-square md:w-14" isRounded />
-                        <h3 className="text-2xl mt-auto font-medium">{author.name}</h3>
+                        <h2 className="text-2xl mt-auto font-medium">{author.name}</h2>
                     </div>
                     <div className="ml-auto flex items-center justify-center">
                         <span className="hidden
