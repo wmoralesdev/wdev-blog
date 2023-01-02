@@ -20,7 +20,7 @@ const Login: FC = () => (
 const Container: FC = () => {
     const { query } = useRouter();
     const { data: comments } = useQuery(['post-comments', query.slug as string], () => getComments(query.slug as string), {
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: false,`
     });
     const queryClient = useQueryClient();
     const { data: session } = useSession();
