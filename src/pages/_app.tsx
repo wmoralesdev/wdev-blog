@@ -2,7 +2,6 @@ import '../styles/globals.css';
 
 import React, { useState } from 'react';
 import { SessionProvider } from 'next-auth/react';
-import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { AnimatePresence } from 'framer-motion';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -32,4 +31,4 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
     );
 };
 
-export default appWithTranslation(MyApp);
+export default MyApp;

@@ -5,6 +5,7 @@ export interface ReplyModel {
     author: UserModel;
     id: string;
     created_at: string;
+    commentId?: string;
 }
 
 export interface CommentModel {

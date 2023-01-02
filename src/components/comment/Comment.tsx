@@ -99,7 +99,14 @@ const Comment: FC<CommentProps> = ({
                     <div className="ml-auto w-[90%] flex flex-col gap-2
                     md:w-[91%]"
                     >
-                        { replies.map((reply) => <Reply key={reply.id} {...reply} />)}
+                        { replies.map((reply) => (
+                            <Reply
+                                key={reply.id}
+                                {...reply}
+                                commentId={id}
+                                slug={query.slug as string}
+                            />
+                        ))}
                     </div>
                 ) : null
             }

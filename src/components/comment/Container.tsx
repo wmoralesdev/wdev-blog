@@ -1,4 +1,4 @@
-import React, {FC, useId} from 'react';
+import React, { FC } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { AiFillGithub } from 'react-icons/ai';
 import { useQuery, useQueryClient } from '@tanstack/react-query';

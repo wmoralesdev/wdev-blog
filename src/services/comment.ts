@@ -1,4 +1,4 @@
-import { CommentModel } from '@models/comment';
+import { CommentModel, ReplyModel } from '@models/comment';
 import { Comment, Reply } from '@prisma/client';
 import createInstance from './http';
 
@@ -12,4 +12,4 @@ export const deleteComment = (slug: string, commentId: string) => commentInstanc
 
 export const createReply = (slug: string, commentId: string, data: Partial<Reply>) => commentInstance.post<CommentModel>(`/post/${slug}/comment/${commentId}/reply`, data);
 
-export const deleteReply = (slug: string, commentId: string, replyId: string) => commentInstance.post<CommentModel>(`/post/${slug}/comment/${commentId}/reply/${replyId}`);
+export const deleteReply = (slug: string, commentId: string, replyId: string) => commentInstance.delete<ReplyModel>(`/post/${slug}/comment/${commentId}/reply/${replyId}`);

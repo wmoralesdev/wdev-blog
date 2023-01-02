@@ -31,6 +31,10 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
         <Layout>
             <Head>
                 <title>{ title }</title>
+                <meta
+                    property="og:image"
+                    content={`${process.env.NEXT_PUBLIC_HOST_URL}/api/og?slug=${slug}`}
+                />
             </Head>
             <div className="max-w-screen-md w-screen text-left px-4 flex flex-col gap-y-4">
                 <h1 className="gradient padding text-3xl md:text-5xl"><span>{ title }</span></h1>
