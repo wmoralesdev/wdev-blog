@@ -2,6 +2,7 @@ import { PostModel } from '@models/post';
 import client from '@sanity-local/client';
 import { postsByTitleQuery } from '@sanity-local/queries';
 import { useMutation } from '@tanstack/react-query';
+import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiSearch } from 'react-icons/fi';
@@ -19,17 +20,17 @@ interface PostPreviewProps {
 }
 
 const PostPreview: FC<PostPreviewProps> = ({ post }) => (
-    <a
-        href="/"
+    <Link
+        href={`/blog/${post.slug.current}`}
         className="w-full aspect-video relative rounded-lg border-4 border-primary bg-cover bg-top cust-transition
         md:w-1/2 hover:scale-105"
         style={{ backgroundImage: `url(${post.coverImage})` }}
     >
-        <div className="absolute z-0 bg-black w-full h-full top-0 left-0 rounded bg-opacity-90" />
+        <div className="absolute z-0 bg-black w-full h-full top-0 left-0 rounded bg-opacity-40" />
         <div className="relative z-10 w-full h-full p-2 flex flex-col justify-end items-end">
             <h1 className="gradient padding text-2xl text-right"><span>{ post.title }</span></h1>
         </div>
-    </a>
+    </Link>
 );
 
 const BlogPage: FC<BlogPageProps> = ({ posts }) => {

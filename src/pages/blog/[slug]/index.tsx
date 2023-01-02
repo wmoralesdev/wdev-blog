@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { Layout } from '@components/layout';
 import { NextPage, GetStaticPropsContext } from 'next';
 import Head from 'next/head';
@@ -23,6 +23,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
         },
     },
 ) => {
+    const spanId = useId();
     const { data: res } = useQuery(['visit-post', slug.current], () => trackPostVisit(slug.current), {
         refetchOnWindowFocus: false,
     });
@@ -50,10 +51,10 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                             <HiEye />
                             { res?.data?.views ?? '' }
                         </span>
-                        { categories.map((cat) => <span className="ext-sm bg-primary rounded-full px-2 py-1">{cat.title}</span>) }
+                        { categories.map((cat, index) => <span key={`${spanId}-${index}`} className="ext-sm bg-primary rounded-full px-2 py-1">{cat.title}</span>) }
                     </div>
                 </div>
-                <ImageContainer src={post.coverImage} alt="alt" className="w-full aspect-video bg-red-200" />
+                <ImageContainer src={post.coverImage} alt="alt" className="w-full aspect-video bg-black/30" />
                 <hr className="border-primary border-t-2" />
                 <div className="w-full flex flex-col gap-4">
                     <Block body={post.body} />
