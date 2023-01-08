@@ -12,7 +12,7 @@ export const config = {
 const key = crypto.subtle.importKey(
     'raw',
     new TextEncoder().encode(process.env.OG_SECRET),
-    { name: 'HMAC', hash: { name: 'SHA_256' } },
+    { name: 'HMAC', hash: { name: 'SHA-256' } },
     false,
     ['sign'],
 );
