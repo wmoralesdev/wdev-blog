@@ -1,5 +1,6 @@
 {
     "extends": [
+        "next",
         "airbnb",
         "airbnb-typescript"
     ],
@@ -22,6 +23,7 @@
         "react/jsx-props-no-spreading": "off",
         "react/no-unused-prop-types": "off",
         "react/no-array-index-key": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "import/no-cycle": ["error", { "maxDepth": 1 }]
     }
 }

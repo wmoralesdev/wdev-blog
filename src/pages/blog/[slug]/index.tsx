@@ -11,9 +11,11 @@ import { useQuery } from '@tanstack/react-query';
 import { trackPostVisit } from '@services/tracking';
 import { HiEye } from 'react-icons/hi';
 import { Container } from '@components/comment';
+import { createHmac } from 'crypto';
 
 interface BlogPostPageProps {
     post: PostModel;
+    token: string;
 }
 
 const BlogPostPage: NextPage<BlogPostPageProps> = (
@@ -21,6 +23,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
         post: {
             slug, title, author, categories, ...post
         },
+        token,
     },
 ) => {
     const spanId = useId();
@@ -34,7 +37,7 @@ const BlogPostPage: NextPage<BlogPostPageProps> = (
                 <title>{ title }</title>
                 <meta
                     property="og:image"
-                    content={post.metaImage}
+                    content={`${process.env.NEXT_PUBLIC_HOST_URL}/api/og?title=${title}&imgSrc=${post.miniatureImage}&token=${token}`}
                 />
                 <meta name="description" content={post.description} />
                 <meta name="keywords" content="wmorales, dev, reactjs, nodejs, .net" />
@@ -78,9 +81,15 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     const { slug } = params;
     const post = await client.fetch<PostModel>(postBySlugQuery, { slug });
 
+    const hmac = createHmac('sha256', process.env.OG_SECRET);
+    hmac.update(JSON.stringify({ title: post.title, imgSrc: post.miniatureImage }));
+
+    const token = hmac.digest('hex');
+
     return {
         props: {
             post,
+            token,
         },
     };
 }
