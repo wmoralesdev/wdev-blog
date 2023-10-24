@@ -121,7 +121,7 @@ const AboutPage: FC<AboutPageProps> = ({ experience }) => {
                         Years of experience
                     </p>
                     <p className="inline-flex gap-2 items-center gradient padding rounded-full bg-light py-1 px-2 cursor-pointer cust-transition hover:bg-primary hover:gradient-inverted">
-                        <span>Mid/Senior</span>
+                        <span>Senior</span>
                         Software Engineer
                     </p>
                     <p className="inline-flex gap-2 items-center gradient padding rounded-full bg-light py-1 px-2 cursor-pointer cust-transition hover:bg-primary hover:gradient-inverted">
