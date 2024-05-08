@@ -117,7 +117,7 @@ const AboutPage: FC<AboutPageProps> = ({ experience }) => {
                 <h3 className="gradient padding text-3xl"><span>These are the places I&apos;ve worked at 🏢</span></h3>
                 <div className="w-full pb-2 flex flex-wrap gap-2 justify-between items-center text-lg my-1 md:text-xl">
                     <p className="inline-flex gap-2 items-center gradient padding rounded-full bg-light py-1 px-2 cursor-pointer cust-transition hover:bg-primary hover:gradient-inverted">
-                        <span>3+</span>
+                        <span>{new Date().getFullYear() - 2019}</span>
                         Years of experience
                     </p>
                     <p className="inline-flex gap-2 items-center gradient padding rounded-full bg-light py-1 px-2 cursor-pointer cust-transition hover:bg-primary hover:gradient-inverted">
