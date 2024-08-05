@@ -2,26 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+  background: #0C0C0C;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    @apply text-white;
+  }
+
+  .debug {
+    @apply border border-red-500;
+  }
+
+  .solo-gradient {
+    background: linear-gradient(90deg, #fff, #6B24E5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .h-dscreen {
+    height: 100dvh;
+  }
+
+  .w-dscreen {
+    width: 100dvw;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+@layer components {
+  .fadeout-horizontal {
+    mask-image: linear-gradient(
+      to right,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      #0c0c0c 5rem,
+      #0c0c0c calc(100% - 5rem),
+      transparent
+    );
+  }
+
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee:before,
+  .marquee:after {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    content: '';
+    z-index: 2;
+  }
+
+  .marquee-slide {
+    display: inline-flex;
+    gap: 3rem;
+    padding-left: 3rem;
+    animation: marquee-move var(--speed, 25s) linear infinite var(--direction, forwards);
+    will-change: transform;
+
+    @media (min-width: 768px) {
+      gap: 4.8rem;
+      padding-left: 4.8rem;
+    }
+  }
+
+  .marquee:hover .marquee-slide {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    @apply flex flex-col items-center justify-center gap-4;
+  }
+
+  .marquee-item span {
+    @apply bg-white/10 text-white rounded-full px-6 py-2 font-bold text-sm md:text-base;
+  }
+
+  .marquee-icon {
+    @apply size-16 lg:size-24;
+  }
+
+  .grid-item {
+    @apply flex flex-col items-center justify-center bg-white/10 rounded-lg cursor-default;
+  }
+
+  a.grid-item {
+    @apply transition-all hover:scale-105 cursor-pointer;
+  }
+}
+
+@keyframes marquee-move {
+  from {
+    transform: translateX(0);
+  }
+  
+  to {
+    transform: translateX(-100%);
+  }
 }

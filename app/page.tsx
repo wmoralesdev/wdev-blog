@@ -1,113 +1,308 @@
-import Image from 'next/image'
+import { FC } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Cobe } from './components/cobe';
+import {
+  AwsIcon,
+  AzureIcon,
+  DockerIcon,
+  DotnetIcon,
+  GithubIcon,
+  InstagramIcon,
+  JavascriptIcon,
+  KubernetesIcon,
+  LinkedInIcon,
+  MongoIcon,
+  NestIcon,
+  NextIcon,
+  PostgresIcon,
+  ReactIcon,
+  SqlServerIcon,
+  TailwindIcon,
+  TypescriptIcon,
+} from './components/icons';
+import { Marquee } from './components/marquee';
 
-export default function Home() {
+const Home: FC = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="container flex flex-col gap-10">
+      <section
+        className="lg:[h-70dvh] flex h-[85dvh] flex-col-reverse items-start justify-center
+      gap-4 lg:flex-row lg:items-center"
+      >
+        <div
+          className="flex flex-col items-start justify-start gap-4
+        lg:w-3/4 lg:gap-8"
+        >
+          <div
+            className="relative size-12 rounded-full
+          lg:size-20"
           >
-            By{' '}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src="/img/me.jpg"
+              alt="Walter Morales"
+              className="rounded-full"
+              layout="fill"
+            />
+            <div className="absolute -z-10 size-full rounded-full bg-solo blur" />
+          </div>
+          <h1
+            className="text-3xl
+          lg:text-6xl"
+          >
+            Hello, I&apos;m{' '}
+            <strong className="solo-gradient">Walter Morales</strong>
+          </h1>
+          <h2
+            className="text-xl font-light
+          lg:text-3xl"
+          >
+            I&apos;ll help you{' '}
+            <strong className="solo-gradient font-bold">build</strong>
+            <br />
+            something{' '}
+            <strong className="solo-gradient font-bold">amazing</strong>
+          </h2>
+          <Link
+            href="#about-me"
+            className="group inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-lg text-primary
+            transition-all hover:scale-110"
+          >
+            Get to know me
+            <ChevronDownIcon className="ml-2 size-6" />
+          </Link>
+        </div>
+        <div
+          className="mx-auto w-4/5
+        lg:w-1/4"
+        >
+          <Cobe />
+        </div>
+      </section>
+      <section
+        className=" h-[90dvh] w-full space-y-4
+      lg:h-[40dvh]"
+      >
+        <h2
+          className="text-xl
+        lg:text-4xl"
+        >
+          Wanted to know more{' '}
+          <span className="solo-gradient">
+            <strong>about me</strong>?
+          </span>
+        </h2>
+        <div
+          className="grid grid-cols-3 grid-rows-5 gap-4 
+        lg:grid-cols-10 lg:grid-rows-2"
+        >
+          {/* Exp */}
+          <div
+            className="grid-item col-span-2 flex-row gap-2
+          lg:row-span-2 lg:flex-col lg:gap-0"
+          >
+            <strong
+              className="text-5xl 
+            lg:text-8xl"
+            >
+              4+
+            </strong>
+            <small
+              className="text-base
+            lg:text-lg"
+            >
+              yrs of exp
+            </small>
+          </div>
+          {/* Stack */}
+          <div
+            className="grid-item aspect-square gap-2
+          lg:col-span-2 lg:row-span-2"
+          >
+            <DotnetIcon
+              className="size-12
+            lg:size-32"
+            />
+            <small
+              className="text-sm
+            lg:text-lg"
+            >
+              main stack
+            </small>
+          </div>
+          {/* Clients */}
+          <div
+            className="grid-item col-span-3 row-span-1 h-full flex-row gap-2 
+          lg:col-start-3 lg:row-start-1 lg:gap-4"
+          >
+            <small
+              className="text-lg
+            lg:text-xl"
+            >
+              Clients from
+            </small>
+            <strong
+              className="text-5xl
+            lg:text-6xl"
+            >
+              5+
+            </strong>
+            <small
+              className="text-lg
+            lg:text-xl"
+            >
+              countries
+            </small>
+          </div>
+          {/* Title */}
+          <div
+            className="grid-item col-span-3 row-span-1 h-full flex-row gap-2 
+          lg:col-start-3 lg:row-start-2 lg:gap-4"
+          >
+            <strong
+              className="text-2xl
+            lg:text-3xl"
+            >
+              Sr
+            </strong>
+            <small
+              className="text-2xl
+            lg:text-3xl"
+            >
+              Software Engineer
+            </small>
+          </div>
+          {/* Github */}
+          <a
+            href="https://github.com/wmoralesdev"
+            target="_blank"
+            className="grid-item row-start-3 aspect-square gap-2
+            lg:col-start-8 lg:row-start-2"
+            rel="noreferrer"
+          >
+            <span className="sr-only">Github</span>
+            <GithubIcon
+              className="size-12
+            lg:size-16"
             />
           </a>
+          {/* LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/wmoralesdev/"
+            target="_blank"
+            className="grid-item row-start-3 aspect-square gap-2
+            lg:col-start-9 lg:row-start-2"
+            rel="noreferrer"
+          >
+            <span className="sr-only">LinkedIn</span>
+            <LinkedInIcon
+              className="size-12 
+              lg:size-16"
+            />
+          </a>
+          {/* Instagram */}
+          <a
+            href="https://www.instagram.com/wmoralesdev/"
+            target="_blank"
+            className="grid-item row-start-3 aspect-square gap-2
+            lg:col-start-10 lg:row-start-2"
+            rel="noreferrer"
+          >
+            <span className="sr-only">Instagram</span>
+            <InstagramIcon
+              className="size-12
+            lg:size-16"
+            />
+          </a>
+          {/* Learning */}
+          <div
+            className="grid-item col-span-3 row-span-1 h-full flex-row gap-4
+          lg:gap-6"
+          >
+            <small
+              className="text-lg
+            lg:text-xl"
+            >
+              Currently learning
+            </small>
+            <KubernetesIcon
+              className="size-12 
+            lg:size-16"
+            />
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      </section>
+      <section
+        className="h-[90dvh] space-y-20
+      lg:h-[40dvh]"
+      >
+        <h2
+          className="text-xl
+        lg:text-4xl"
+        >
+          I&apos;m also quite{' '}
+          <span className="solo-gradient">
+            <strong>profficient</strong> with
+          </span>
+        </h2>
+        <Marquee
+          items={[
+            { label: 'AWS', Icon: AwsIcon },
+            { label: 'Azure', Icon: AzureIcon },
+            { label: 'Docker', Icon: DockerIcon },
+            { label: '.NET', Icon: DotnetIcon },
+            { label: 'JavaScript', Icon: JavascriptIcon },
+            { label: 'MongoDB', Icon: MongoIcon },
+            { label: 'NestJS', Icon: NestIcon },
+            { label: 'NextJS', Icon: NextIcon },
+            { label: 'PostgreSQL', Icon: PostgresIcon },
+            { label: 'ReactJS', Icon: ReactIcon },
+            { label: 'SQL Server', Icon: SqlServerIcon },
+            { label: 'Tailwind CSS', Icon: TailwindIcon },
+            { label: 'TypeScript', Icon: TypescriptIcon },
+          ]}
+          direction="forwards"
+          speed={30}
+          className="hidden lg:block"
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <Marquee
+          items={[
+            { label: 'AWS', Icon: AwsIcon },
+            { label: 'Azure', Icon: AzureIcon },
+            { label: 'Docker', Icon: DockerIcon },
+            { label: '.NET', Icon: DotnetIcon },
+          ]}
+          direction="forwards"
+          speed={15}
+          className="lg:hidden"
+        />
+        <Marquee
+          items={[
+            { label: 'JavaScript', Icon: JavascriptIcon },
+            { label: 'MongoDB', Icon: MongoIcon },
+            { label: 'NestJS', Icon: NestIcon },
+            { label: 'NextJS', Icon: NextIcon },
+          ]}
+          direction="backwards"
+          speed={15}
+          className="lg:hidden"
+        />
+        <Marquee
+          items={[
+            { label: 'PostgreSQL', Icon: PostgresIcon },
+            { label: 'ReactJS', Icon: ReactIcon },
+            { label: 'SQL Server', Icon: SqlServerIcon },
+            { label: 'Tailwind CSS', Icon: TailwindIcon },
+            { label: 'TypeScript', Icon: TypescriptIcon },
+          ]}
+          direction="forwards"
+          speed={15}
+          className="lg:hidden"
+        />
+      </section>
     </main>
-  )
-}
+  );
+};
+
+export default Home;

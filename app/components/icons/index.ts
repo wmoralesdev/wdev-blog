@@ -1,0 +1,17 @@
+export { default as AwsIcon } from './aws';
+export { default as AzureIcon } from './azure';
+export { default as DockerIcon } from './docker';
+export { default as DotnetIcon } from './dotnet';
+export { default as GithubIcon } from './github';
+export { default as InstagramIcon } from './instagram';
+export { default as JavascriptIcon } from './javascript';
+export { default as KubernetesIcon } from './kubernetes';
+export { default as LinkedInIcon } from './linkedin';
+export { default as MongoIcon } from './mongo';
+export { default as NestIcon } from './nest';
+export { default as NextIcon } from './next';
+export { default as PostgresIcon } from './postgres';
+export { default as ReactIcon } from './react';
+export { default as SqlServerIcon } from './sqlserver';
+export { default as TailwindIcon } from './tailwind';
+export { default as TypescriptIcon } from './typescript';
