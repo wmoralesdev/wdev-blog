@@ -16,7 +16,7 @@ const Backdrop: FC = () => (
     />
 
     <div
-      className="absolute right-40 bottom-20 mt-40
+      className="absolute bottom-20 right-40 mt-40
       size-60 rounded-full bg-solo/30
       blur-3xl md:size-72 lg:size-96"
     />

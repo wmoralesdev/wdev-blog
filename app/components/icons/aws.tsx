@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 // @ts-nocheck
 /* eslint-disable react/jsx-props-no-spreading */
 import type { SVGProps } from 'react';
