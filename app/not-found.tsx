@@ -1,11 +1,19 @@
-import { ExclamationTriangleIcon } from '@heroicons/react/20/solid';
-import { FC } from 'react';
+/* eslint-disable react/function-component-definition */
 
-const NotFound: FC = () => (
-  <main className="container flex h-[85svh] flex-col items-center justify-center gap-4">
-    <ExclamationTriangleIcon className="size-20 text-white" />
-    <h1 className="text-4xl">Under construction</h1>
-  </main>
-);
+'use client';
 
-export default NotFound;
+import Error from 'next/error';
+
+// Render the default Next.js 404 page when a route
+// is requested that doesn't match the middleware and
+// therefore doesn't have a locale associated with it.
+
+export default function NotFound() {
+  return (
+    <html lang="en">
+      <body>
+        <Error statusCode={404} />
+      </body>
+    </html>
+  );
+}

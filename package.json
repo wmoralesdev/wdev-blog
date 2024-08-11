@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,8 +23,10 @@
     "framer-motion": "^11.3.19",
     "lucide-react": "^0.424.0",
     "next": "^14.2.5",
+    "next-intl": "^3.17.2",
     "postcss": "^8.4.40",
     "react": "18.2.0",
+    "react-calendly": "^4.3.1",
     "react-dom": "18.2.0",
     "react-spring": "^9.7.4",
     "react-youtube": "^10.1.0",

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import useClock from '@/app/hooks/useClock';
+import useClock from 'app/hooks/useClock';
 import classNames from 'classnames';
 import { FC, HTMLAttributes } from 'react';
 
@@ -19,10 +19,3 @@ export const Clock: FC<HTMLAttributes<HTMLSpanElement>> = ({
     </span>
   );
 };
-
-export const links = [
-  { name: 'Home', href: '/' },
-  { name: 'Guestbook', href: '/guestbook' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Services', href: '/services' },
-];

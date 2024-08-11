@@ -1,0 +1,93 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "Guestbook": "Guestbook",
+    "Blog": "Blog",
+    "Services": "Services",
+    "Login": "Login with"
+  },
+  "Homepage": {
+    "Greetings": {
+      "Salute": "Hello, I'm",
+      "Build": "I'll help you",
+      "StrongBuild": "build",
+      "Something": "something",
+      "StrongSomething": "amazing"
+    },
+    "Meet": "Get to know me",
+    "About": {
+      "Title": "Wanted to know more",
+      "Gradient": "about me?",
+      "Content": {
+        "Exp": "Yrs of exp",
+        "Clients1": "Clients from",
+        "Clients2": "countries",
+        "Stack": "Main stack",
+        "Learning": "Currently learning"
+      }
+    },
+    "Stack": {
+      "Title": "I'm also quite",
+      "Gradient": "profficient",
+      "Complement": "with"
+    },
+    "Experience": {
+      "Title": "I've been lucky to work at some of the",
+      "Gradient": "best companies",
+      "Complement": "out there",
+      "Content": {
+        "Company1": {
+          "Title": "VincuHub",
+          "Position": "Fullstack Developer",
+          "Description": "Creationg and management of .NET applications and ReactJS websites"
+        },
+        "Company2": {
+          "Title": "Elaniin",
+          "Position": "Javascript Fullstack Developer",
+          "Description": "Fullstack development of enterprise software in Javascript and .NET"
+        },
+        "Company3": {
+          "Title": "InnRoad",
+          "Position": "Software Engineer",
+          "Description": "Developed microservices for Airbnb and Hotel Booking integrations"
+        },
+        "Company4": {
+          "Title": "Resultier",
+          "Position": ".NET Developer",
+          "Description": "Creation of medical instruments and software used to predict and analyze patients vital signs"
+        },
+        "Company5": {
+          "Title": "Ravn",
+          "Position": "Sr Software Engineer",
+          "Description": "Contractor and consultant for API migration into .NET environment"
+        },
+        "Company6": {
+          "Title": "Southworks",
+          "Position": "Sr Software Engineer",
+          "Description": "Integral development of Cloud-based solutions using .NET & NodeJS + ReactJS"
+        },
+        "Company7": {
+          "Title": "Freelance",
+          "Position": "Product Engineer",
+          "Description": "Architec design and lead developer of a Salvadorean Government Web Service Application"
+        }
+      }
+    },
+    "Contact": {
+      "Title": "Now's the time to",
+      "Gradient": "colaborate",
+      "Subtitle": "A coffee chat is the best way to start a new project",
+      "Button": "Let's do it"
+    }
+  },
+  "Footer": {
+    "Socials": "Socials",
+    "Resources": {
+      "Title": "Resources",
+      "Source": "Source code",
+      "DesignInspo": "Design inspiration",
+      "FeaturesInspo": "Features inspiration"
+    },
+    "Contact": "Contact"
+  }
+}

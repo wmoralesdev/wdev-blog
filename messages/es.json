@@ -1,0 +1,93 @@
+{
+  "Navbar": {
+    "Home": "Inicio",
+    "Guestbook": "Guestbook",
+    "Blog": "Blog",
+    "Services": "Servicios",
+    "Login": "Iniciar sesión con"
+  },
+  "Homepage": {
+    "Greetings": {
+      "Salute": "Hola, soy",
+      "Build": "Te ayudaré a",
+      "StrongBuild": "construir",
+      "Something": "algo",
+      "StrongSomething": "increíble"
+    },
+    "Meet": "Conóceme",
+    "About": {
+      "Title": "¿Quieres saber más",
+      "Gradient": "sobre mí?",
+      "Content": {
+        "Exp": "Años de exp",
+        "Clients1": "Clientes de",
+        "Clients2": "países",
+        "Stack": "Stack principal",
+        "Learning": "Actualmente aprendiendo"
+      }
+    },
+    "Stack": {
+      "Title": "También soy bastante",
+      "Gradient": "hábil",
+      "Complement": "con"
+    },
+    "Experience": {
+      "Title": "He tenido la suerte de trabajar en algunas de las",
+      "Gradient": "mejores empresas",
+      "Complement": "del mercado",
+      "Content": {
+        "Company1": {
+          "Title": "VincuHub",
+          "Position": "Desarrollador Fullstack",
+          "Description": "Creación y gestión de aplicaciones .NET y sitios web en ReactJS"
+        },
+        "Company2": {
+          "Title": "Elaniin",
+          "Position": "Desarrollador Fullstack en Javascript",
+          "Description": "Desarrollo Fullstack de software empresarial en Javascript y .NET"
+        },
+        "Company3": {
+          "Title": "InnRoad",
+          "Position": "Ingeniero de Software",
+          "Description": "Desarrollo de microservicios para integraciones de Airbnb y reservas de hoteles"
+        },
+        "Company4": {
+          "Title": "Resultier",
+          "Position": "Desarrollador .NET",
+          "Description": "Creación de instrumentos médicos y software utilizado para predecir y analizar signos vitales de pacientes"
+        },
+        "Company5": {
+          "Title": "Ravn",
+          "Position": "Ingeniero de Software Senior",
+          "Description": "Contratista y consultor para la migración de API al entorno .NET"
+        },
+        "Company6": {
+          "Title": "Southworks",
+          "Position": "Ingeniero de Software Senior",
+          "Description": "Desarrollo integral de soluciones en la nube utilizando .NET y NodeJS + ReactJS"
+        },
+        "Company7": {
+          "Title": "Freelance",
+          "Position": "Ingeniero de Producto",
+          "Description": "Diseño arquitectónico y desarrollador principal de una aplicación de servicio web para el Gobierno de El Salvador"
+        }
+      }
+    },
+    "Contact": {
+      "Title": "Es el momento de",
+      "Gradient": "colaborar",
+      "Subtitle": "Una charla con café es la mejor manera de comenzar un nuevo proyecto",
+      "Button": "Contáctame"
+    }
+  },
+  "Footer": {
+    "Socials": "Redes Sociales",
+    "Resources": {
+      "Title": "Recursos",
+      "Source": "Código fuente",
+      "DesignInspo": "Inspiración de diseño",
+      "FeaturesInspo": "Inspiración de características"
+    },
+    "Contact": "Contáctame"
+  }
+}

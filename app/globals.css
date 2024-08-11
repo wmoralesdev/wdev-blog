@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --nav-height: 4rem;
+  --page-height: calc(100dvh - 4rem);
+
+  --clr-1: #3A0F87;
+  --clr-2: #4C12A7;
+  --clr-3: #581CC3;
+  --clr-4: #9651E9;
+  --clr-5: #B382F2;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --nav-height: 5rem;
+    --page-height: calc(100dvh - 5rem);
+  }
+}
+
 html {
   background: #0C0C0C;
 }
@@ -20,14 +38,6 @@ html {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  .h-dscreen {
-    height: 100dvh;
-  }
-
-  .w-dscreen {
-    width: 100dvw;
   }
 }
 
@@ -93,6 +103,52 @@ html {
 
   a.grid-item {
     @apply transition-all hover:scale-105 cursor-pointer;
+  }
+
+  .neon-border {
+    border-radius: 0.2rem;
+    position: relative;
+  }
+  
+  .neon-border::before,
+  .neon-border::after {
+    content: "";
+    position: absolute;
+    inset: -0.2rem;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--clr-3),
+      var(--clr-4),
+      var(--clr-5),
+      var(--clr-4),
+      var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 20s linear infinite;
+  }
+  
+  .neon-border::after {
+    filter: blur(1rem);
+
+    @media (min-width: 768px) {
+      filter: blur(2rem);
+    }
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
   }
 }
 

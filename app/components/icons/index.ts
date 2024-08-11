@@ -1,8 +1,10 @@
 export { default as AwsIcon } from './aws';
 export { default as AzureIcon } from './azure';
+export { default as CoffeeIcon } from './coffee';
 export { default as DockerIcon } from './docker';
 export { default as DotnetIcon } from './dotnet';
 export { default as GithubIcon } from './github';
+export { default as GoogleIcon } from './google';
 export { default as InstagramIcon } from './instagram';
 export { default as JavascriptIcon } from './javascript';
 export { default as KubernetesIcon } from './kubernetes';
