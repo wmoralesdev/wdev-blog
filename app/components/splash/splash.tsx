@@ -1,12 +1,21 @@
+/* eslint-disable no-nested-ternary */
+
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { ArrowUpRightIcon, HeartIcon } from '@heroicons/react/20/solid';
+import useWindowSize from '@/hooks/useWindowSize';
 import { Backdrop } from '../backdrop';
 
 const Splash: FC = () => {
-  const [played, setPlayed] = useState(localStorage.getItem('played') !== null);
+  const safeLocalStorage =
+    typeof localStorage !== 'undefined' ? localStorage : null;
+  const { width } = useWindowSize();
+  const device = useMemo(() => (width < 1024 ? 'mobile' : 'desktop'), [width]);
+  const [played, setPlayed] = useState(
+    safeLocalStorage?.getItem('played') !== null,
+  );
 
   const [ballTimeout, setBallTimeout] = useState<NodeJS.Timeout | null>(() => {
     return setTimeout(() => {
@@ -43,10 +52,15 @@ const Splash: FC = () => {
             <AnimatePresence>
               <motion.div
                 initial={{ scale: 0, translateX: 0 }}
-                animate={{ scale: 1, translateX: ballTimeout ? 0 : '-250%' }}
+                animate={{
+                  scale: 1,
+                  [device === 'mobile' ? 'translateY' : 'translateX']:
+                    ballTimeout ? 0 : device === 'mobile' ? '-125%' : '-250%',
+                }}
                 exit={{ scale: 0 }}
                 transition={{ type: 'spring', bounce: 0, duration: 1 }}
-                className="absolute inline-flex aspect-square size-20 items-center justify-center rounded-full bg-white text-3xl hover:bg-solo"
+                className="absolute inline-flex aspect-square size-14 items-center justify-center rounded-full bg-white text-3xl hover:bg-solo
+                lg:size-20"
               >
                 👋
               </motion.div>
@@ -58,7 +72,8 @@ const Splash: FC = () => {
                   animate={{ width: 'auto' }}
                   exit={{ width: 0 }}
                   transition={{ type: 'spring', bounce: 0, duration: 1 }}
-                  className="absolute inline-flex items-center justify-center gap-1 overflow-hidden text-nowrap rounded-full text-2xl font-light"
+                  className="absolute inline-flex items-center justify-center gap-1 overflow-hidden text-nowrap rounded-full text-xl font-light
+                  lg:text-2xl"
                 >
                   Made with <HeartIcon className="size-8 text-red-400" /> using
                   Next.js

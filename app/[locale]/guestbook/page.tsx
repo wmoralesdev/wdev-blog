@@ -1,4 +1,3 @@
-import { Section } from '@/components/layout';
 import { FC } from 'react';
 import prisma from '@/lib/prisma';
 import { auth } from '@/auth';
@@ -34,10 +33,10 @@ const Guestbook: FC = async () => {
 
   return (
     <main className="container flex flex-col pb-20">
-      <Section small className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 pt-[var(--nav-height)]">
         <Hero count={count} />
         <Form user={session?.user} signatures={signatures} />
-      </Section>
+      </div>
     </main>
   );
 };

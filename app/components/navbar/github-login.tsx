@@ -2,17 +2,29 @@
 
 import { FC } from 'react';
 import { signIn } from 'next-auth/react';
+import { twMerge } from 'tailwind-merge';
 import { GithubIcon } from '../icons';
 
-const GithubLogin: FC = () => {
+type Props = {
+  mobile?: boolean;
+};
+
+const GithubLogin: FC<Props> = ({ mobile }) => {
   return (
     <button
       type="button"
-      className="flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-white transition-all hover:scale-105"
+      className={twMerge(
+        'flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 transition-all hover:scale-105',
+        mobile ? 'w-full bg-white text-primary' : 'bg-primary text-white',
+      )}
       onClick={() => signIn('github')}
     >
-      <GithubIcon className="size-6" />
-      <span className="text-white">Github</span>
+      <GithubIcon
+        className={twMerge('size-6', mobile ? 'text-primary' : 'text-white')}
+      />
+      <span className={twMerge(mobile ? 'text-primary' : 'text-white')}>
+        Github
+      </span>
     </button>
   );
 };

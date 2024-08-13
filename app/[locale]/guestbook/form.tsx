@@ -95,10 +95,15 @@ const Form: FC<Props> = ({ user, signatures }) => {
           <button
             type="button"
             onClick={() => signIn('google')}
-            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white p-4 text-lg font-bold text-primary transition-all hover:bg-solo hover:text-white"
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white p-4 font-bold 
+            text-primary transition-all hover:bg-solo hover:text-white
+            lg:text-lg"
           >
             {t('Form.SignIn')}
-            <GoogleIcon className="size-6" />
+            <GoogleIcon
+              className="size-4
+            lg:size-6"
+            />
           </button>
         </div>
       ) : (
@@ -130,7 +135,7 @@ const Form: FC<Props> = ({ user, signatures }) => {
               className="text-sm font-bold text-white
         lg:text-base"
             >
-              {user ? user.name : 'Guest'}
+              {user ? user.name?.split(' ').splice(1) : 'Guest'}
             </h3>
             <div className="flex flex-1 items-center justify-between gap-4">
               <textarea
@@ -164,7 +169,10 @@ const Form: FC<Props> = ({ user, signatures }) => {
           </div>
         </form>
       )}
-      <div className="grid grid-cols-2 gap-4">
+      <div
+        className="grid grid-cols-1 gap-4 
+      lg:grid-cols-2"
+      >
         {finalSignatures.map((signature) => (
           <div
             key={signature.createdAt?.toISOString()}
@@ -178,11 +186,14 @@ const Form: FC<Props> = ({ user, signatures }) => {
               })}
             </span>
             {signature.user.image ? (
-              <div className="aspect-square">
+              <div
+                className="aspect-square size-10
+              lg:size-16"
+              >
                 <Image
                   src={signature.user.image}
                   alt="User profile"
-                  className="rounded-full"
+                  className="rounded-full border border-solo"
                   width={64}
                   height={64}
                   quality={100}
@@ -190,7 +201,9 @@ const Form: FC<Props> = ({ user, signatures }) => {
               </div>
             ) : null}
             <div className="space-y-1">
-              <h3 className="font-bold">{signature.user.name}</h3>
+              <h3 className="font-bold">
+                {signature.user.name?.split(' ').splice(0, 1).join(' ')}
+              </h3>
               <p className="text-sm font-light text-gray-400">
                 {signature.content}
               </p>

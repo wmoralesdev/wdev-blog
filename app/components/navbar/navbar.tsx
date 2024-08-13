@@ -33,7 +33,7 @@ const Navbar: FC<Props> = ({ user }) => {
   }, []);
 
   return width < 768 ? (
-    <NavbarMobile weather={weather} />
+    <NavbarMobile weather={weather} user={user} />
   ) : (
     <NavbarDesktop weather={weather} user={user} />
   );

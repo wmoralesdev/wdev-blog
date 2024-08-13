@@ -9,7 +9,12 @@ import { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
+import { User } from 'next-auth';
+import Image from 'next/image';
+import { signOut } from 'next-auth/react';
 import { Clock } from './clock';
+import GoogleLogin from './google-login';
+import GithubLogin from './github-login';
 
 type Weather = {
   tempC: number;
@@ -18,6 +23,7 @@ type Weather = {
 
 type Props = {
   weather?: Weather;
+  user?: User;
 };
 
 const Bar: FC<HTMLAttributes<HTMLDivElement>> = ({ className }) => (
@@ -29,7 +35,7 @@ const Bar: FC<HTMLAttributes<HTMLDivElement>> = ({ className }) => (
   />
 );
 
-const NavbarMobile: FC<Props> = ({ weather }) => {
+const NavbarMobile: FC<Props> = ({ weather, user }) => {
   const t = useTranslations('Navbar');
   const pathname = usePathname();
   const pathRef = useRef<string>(pathname);
@@ -149,6 +155,34 @@ const NavbarMobile: FC<Props> = ({ weather }) => {
             tabIndex={-1}
           >
             <ul className="flex h-full flex-col items-center justify-start">
+              <li className="my-2 mt-4 flex w-full items-center justify-center gap-4 px-10">
+                {!user ? (
+                  <>
+                    <span className="w-1/2 rounded-full bg-white">
+                      <GoogleLogin mobile />
+                    </span>
+                    <span className="w-1/2 rounded-full bg-white">
+                      <GithubLogin mobile />
+                    </span>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => signOut()}
+                    className="inline-flex items-center justify-center gap-2 rounded-full  bg-white px-4 py-2 text-primary"
+                  >
+                    <Image
+                      src={user.image ?? ''}
+                      alt="User profile"
+                      className="rounded-full"
+                      width={32}
+                      height={32}
+                      quality={100}
+                    />
+                    <span className="text-sm font-bold">Logout</span>
+                  </button>
+                )}
+              </li>
               {links.map((link) => (
                 <li key={link.href} className="flex w-full">
                   <Link
