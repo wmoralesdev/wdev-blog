@@ -6,17 +6,27 @@ import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 import { FC, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { GithubIcon, GoogleIcon } from 'app/components/icons';
+import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
+import { User } from 'next-auth';
+import { twMerge } from 'tailwind-merge';
+import Image from 'next/image';
+import { signOut } from 'next-auth/react';
 import { Clock } from './clock';
+import GithubLogin from './github-login';
+import GoogleLogin from './google-login';
 
 type Weather = {
   tempC: number;
   icon: string;
 };
 
-const NavbarDesktop: FC<{ weather?: Weather }> = ({ weather }) => {
+type Props = {
+  weather?: Weather;
+  user?: User;
+};
+
+const NavbarDesktop: FC<Props> = ({ weather, user }) => {
   const t = useTranslations('Navbar');
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -61,6 +71,23 @@ const NavbarDesktop: FC<{ weather?: Weather }> = ({ weather }) => {
       document.removeEventListener('click', handleClick);
     };
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetch('/api/auth/register', {
+        body: JSON.stringify({
+          email: user.email,
+          name: user.name,
+          image: user.image,
+          source: 'google',
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      });
+    }
+  }, [user]);
 
   return (
     <header
@@ -120,11 +147,14 @@ const NavbarDesktop: FC<{ weather?: Weather }> = ({ weather }) => {
               <motion.div
                 key="account-center"
                 id="account-center"
-                className="absolute right-0 top-0 z-20 flex size-40 items-center justify-around rounded bg-white p-2 text-primary"
+                className={twMerge(
+                  'absolute right-0 top-0 z-20 flex size-40 items-center justify-around rounded bg-white p-2 text-primary',
+                  user ? 'flex-col' : 'flex-row',
+                )}
                 initial={{ width: 0, height: 0, opacity: 0, display: 'none' }}
                 animate={{
-                  width: '27rem',
-                  height: '5rem',
+                  width: user ? '10rem' : '27rem',
+                  height: user ? '13rem' : '5rem',
                   opacity: 1,
                   display: 'flex',
                 }}
@@ -140,23 +170,37 @@ const NavbarDesktop: FC<{ weather?: Weather }> = ({ weather }) => {
                   duration: 0.5,
                 }}
               >
-                <span>{t('Login')}</span>
-                <div className="flex items-center justify-center gap-4">
-                  <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-white"
-                  >
-                    <GoogleIcon className="size-6" />
-                    <span>Google</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2 text-white"
-                  >
-                    <GithubIcon className="size-6" />
-                    <span className="text-white">Github</span>
-                  </button>
-                </div>
+                {user ? (
+                  <>
+                    <Image
+                      src={user.image ?? ''}
+                      alt="User profile"
+                      className="size-20 rounded-full"
+                      width={80}
+                      height={80}
+                    />
+                    <div className="space-y-4 text-center">
+                      <span className="text-lg font-medium">
+                        Hi {user.name?.split(' ')[0]} 👋
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => signOut()}
+                        className="rounded-full bg-primary px-6 py-2 text-white shadow transition-all hover:scale-105"
+                      >
+                        {t('Logout')}
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span>{t('Login')}</span>
+                    <div className="flex items-center justify-center gap-4">
+                      <GoogleLogin />
+                      <GithubLogin />
+                    </div>
+                  </>
+                )}
               </motion.div>
             ) : null}
           </AnimatePresence>

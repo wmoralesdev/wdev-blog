@@ -7,13 +7,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 import { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import { Clock } from './clock';
 
 type Weather = {
   tempC: number;
   icon: string;
+};
+
+type Props = {
+  weather?: Weather;
 };
 
 const Bar: FC<HTMLAttributes<HTMLDivElement>> = ({ className }) => (
@@ -25,7 +29,7 @@ const Bar: FC<HTMLAttributes<HTMLDivElement>> = ({ className }) => (
   />
 );
 
-const NavbarMobile: FC<{ weather?: Weather }> = ({ weather }) => {
+const NavbarMobile: FC<Props> = ({ weather }) => {
   const t = useTranslations('Navbar');
   const pathname = usePathname();
   const pathRef = useRef<string>(pathname);

@@ -4,7 +4,8 @@
     "Guestbook": "Guestbook",
     "Blog": "Blog",
     "Services": "Servicios",
-    "Login": "Iniciar sesión con"
+    "Login": "Iniciar sesión con",
+    "Logout": "Cerrar sesión"
   },
   "Homepage": {
     "Greetings": {
@@ -78,6 +79,33 @@
       "Gradient": "colaborar",
       "Subtitle": "Una charla con café es la mejor manera de comenzar un nuevo proyecto",
       "Button": "Contáctame"
+    }
+  },
+  "Guestbook": {
+    "Empty": {
+      "Variant1": "Está tranquilo aquí... ¡Sé el primero en dejar tu huella! 📝",
+      "Variant2": "No hay mensajes aún—¡inicia la conversación! 💬",
+      "Variant3": "Tus palabras podrían ser las primeras en adornar esta página. ✨"
+    },
+    "Few": {
+      "Variant1": "Las primeras huellas están aquí—¡añade la tuya a la historia! 🦶",
+      "Variant2": "Únete a los primeros visitantes que han dejado sus pensamientos. 🗣️",
+      "Variant3": "Algunas voces ya se han pronunciado—¿qué piensas tú? 🤔"
+    },
+    "Growing": {
+      "Variant1": "El libro de visitas se está llenando—¡tu mensaje podría ser el próximo! ✍️",
+      "Variant2": "Únete a la comunidad de visitantes que han compartido sus pensamientos. 🌍",
+      "Variant3": "Muchos mensajes geniales aquí—¡añade tu voz a la mezcla! 🎤"
+    },
+    "Full": {
+      "Variant1": "Este libro de visitas está rebosante de grandes palabras—¿te animas a contribuir? 🗒️",
+      "Variant2": "Se han contado tantas historias—¿cuál es la tuya? 📖",
+      "Variant3": "Nuestro libro de visitas está lleno de comentarios—¡añade el tuyo a la conversación! 🗯️"
+    },
+    "Form": {
+      "Submit": "Enviar",
+      "Placeholder": "Bienvenido! ¿Qué te trae por aquí? 👀",
+      "SignIn": "Inicia sesión para dejar un mensaje"
     }
   },
   "Footer": {

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { FC } from 'react';
 
 const Calendar = dynamic(() => import('app/content/home/calendar'));
@@ -29,13 +29,31 @@ const Footer: FC = () => {
           lg:text-sm"
               >
                 <li className="transition-all hover:text-white">
-                  <Link href="https://www.linkedin.com">LinkedIn</Link>
+                  <a
+                    href="https://www.linkedin.com/in/wmoralesdev/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    LinkedIn
+                  </a>
                 </li>
                 <li className="transition-all hover:text-white">
-                  <Link href="https://www.instagram.com">Instagram</Link>
+                  <a
+                    href="https://www.instagram.com/wmoralesdev/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Instagram
+                  </a>
                 </li>
                 <li className="transition-all hover:text-white">
-                  <Link href="https://www.github.com">Github</Link>
+                  <a
+                    href="https://github.com/wmoralesdev"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Github
+                  </a>
                 </li>
               </ul>
             </div>
@@ -46,20 +64,40 @@ const Footer: FC = () => {
           lg:text-sm"
               >
                 <li className="transition-all hover:text-white">
-                  <Link href="https://github.com">{t('Resources.Source')}</Link>
+                  <a
+                    href="https://github.com/wmoralesdev/wdev-blog"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t('Resources.Source')}
+                  </a>
                 </li>
                 <li className="transition-all hover:text-white">
-                  <Link href="https://github.com">Globe (Cobe)</Link>
+                  <a
+                    href="https://github.com/shuding/cobe"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Globe (Cobe)
+                  </a>
                 </li>
                 <li className="transition-all hover:text-white">
-                  <Link href="https://github.com">
+                  <a
+                    href="https://dribbble.com/shots/23717022-Brooks-Website-Designer-Portfolio-Website"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {t('Resources.DesignInspo')}
-                  </Link>
+                  </a>
                 </li>
                 <li className="transition-all hover:text-white">
-                  <Link href="https://github.com">
+                  <a
+                    href="https://leerob.io/blog"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {t('Resources.FeaturesInspo')}
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

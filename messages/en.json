@@ -4,7 +4,8 @@
     "Guestbook": "Guestbook",
     "Blog": "Blog",
     "Services": "Services",
-    "Login": "Login with"
+    "Login": "Login with",
+    "Logout": "Logout"
   },
   "Homepage": {
     "Greetings": {
@@ -78,6 +79,33 @@
       "Gradient": "colaborate",
       "Subtitle": "A coffee chat is the best way to start a new project",
       "Button": "Let's do it"
+    }
+  },
+  "Guestbook": {
+    "Empty": {
+      "Variant1": "It's quiet here... Be the first to leave your mark! 📝",
+      "Variant2": "No messages yet—start the conversation! 💬",
+      "Variant3": "Your words could be the first to grace this page. ✨"
+    },
+    "Few": {
+      "Variant1": "The first footprints are here—add yours to the story! 🦶",
+      "Variant2": "Join the early guests who've left their thoughts. 🗣️",
+      "Variant3": "A few voices have spoken—what's on your mind? 🤔"
+    },
+    "Growing": {
+      "Variant1": "The guestbook is filling up—your words could be next! ✍️",
+      "Variant2": "Join the community of visitors who’ve shared their thoughts! 🌍",
+      "Variant3": "Lots of great messages here—add your voice to the mix! 🎤"
+    },
+    "Full": {
+      "Variant1": "This guestbook is brimming with great words—care to contribute? 🗒️",
+      "Variant2": "So many stories told—what’s yours? 📖",
+      "Variant3": "Our guestbook is buzzing with comments—add yours to the conversation! 🗯️"
+    },
+    "Form": {
+      "Submit": "Submit",
+      "Placeholder": "Welcome! What brings you here? 👀",
+      "SignIn": "Sign in to leave a message"
     }
   },
   "Footer": {

@@ -1,7 +1,7 @@
 'use client';
 
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import Image from 'next/image';
 import { Cobe } from 'app/components/cobe';
 import { Section } from 'app/components/layout';

@@ -7,6 +7,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { Backdrop } from 'app/components/backdrop';
 import { Footer } from 'app/components/footer';
 import { getMessages } from 'next-intl/server';
+import { auth } from '@/auth';
+import { Splash } from '@/components/splash';
 
 type Props = {
   children: React.ReactNode;
@@ -30,13 +32,15 @@ export default async function LocaleLayout({
   params: { locale },
 }: Props) {
   const messages = await getMessages();
+  const session = await auth();
 
   return (
     <html lang={locale} className={inter.className}>
-      <body className="relative mx-auto text-white ">
+      <body className="relative mx-auto text-white">
         <NextIntlClientProvider messages={messages}>
+          <Splash />
           <Backdrop />
-          <NavbarCSR />
+          <NavbarCSR user={session?.user} />
           {children}
           <Footer />
         </NextIntlClientProvider>
