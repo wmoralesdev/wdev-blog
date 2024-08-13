@@ -12,7 +12,7 @@ import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 import { GoogleIcon } from '@/components/icons';
 import { useTranslations } from 'next-intl';
-import { signIn } from '@/auth';
+import { signIn } from 'next-auth/react';
 
 const AddSignatureSchema = z.object({
   content: z.string().min(1).max(125),
