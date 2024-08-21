@@ -36,7 +36,7 @@ const Cursor: FC<Props> = ({ user }) => {
 
   return (
     <div className="fixed h-dvh w-screen overflow-hidden">
-      {showCursor ? (
+      {user && showCursor ? (
         <div
           ref={cursorRef}
           className="relative hidden size-14 rounded-full bg-solo md:block"
