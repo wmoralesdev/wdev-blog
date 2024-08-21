@@ -1,5 +1,6 @@
 'use client';
 
+import { Counter } from '@/components/counter';
 import {
   DotnetIcon,
   GithubIcon,
@@ -34,10 +35,10 @@ const About = () => {
             lg:row-span-2 lg:flex-col lg:gap-0"
         >
           <strong
-            className="text-5xl 
+            className="text-5xl font-bold
               lg:text-8xl"
           >
-            4+
+            <Counter from={0} to={5} duration={3} />+
           </strong>
           <small
             className="text-base
@@ -74,10 +75,10 @@ const About = () => {
             {t('Content.Clients1')}
           </small>
           <strong
-            className="text-5xl
+            className="text-5xl font-bold
               lg:text-6xl"
           >
-            5+
+            <Counter from={0} to={5} duration={3} className="" />+
           </strong>
           <small
             className="text-lg

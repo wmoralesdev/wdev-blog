@@ -1,7 +1,6 @@
 'use client';
 
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { Link } from '@/navigation';
 import Image from 'next/image';
 import { Cobe } from 'app/components/cobe';
 import { Section } from 'app/components/layout';
@@ -51,14 +50,19 @@ const Hero = () => {
             {t('Greetings.StrongSomething')}
           </strong>
         </h2>
-        <Link
-          href="#about-me"
+        <button
+          type="button"
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+            }
+          }}
           className="group inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-lg text-primary
               transition-all hover:scale-110"
         >
           {t('Meet')}
           <ChevronDownIcon className="ml-2 size-6" />
-        </Link>
+        </button>
       </div>
       <div
         className="w-4/5

@@ -88,6 +88,8 @@ const Form: FC<Props> = ({ user, signatures }) => {
     }
   };
 
+  const userName = user?.name?.split(' ').splice(0, 1).join(' ');
+
   return (
     <div className="flex flex-col gap-10">
       {!user ? (
@@ -109,17 +111,23 @@ const Form: FC<Props> = ({ user, signatures }) => {
       ) : (
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="neon-border flex w-full gap-4 rounded-lg bg-primary/80 p-4 
-    lg:p-8"
+          className="neon-border flex w-full flex-wrap gap-4 rounded-lg bg-primary/80 p-4 
+    lg:flex-nowrap lg:p-8"
         >
           {status === 'loading' ? (
             <div className="fixed left-0 top-0 z-[10000] inline-flex h-screen w-screen items-center justify-center bg-primary/80">
               <div className="neon-border relative inline-flex aspect-square size-20 animate-pulse items-center justify-center rounded-full bg-white" />
             </div>
           ) : null}
-          <div className="relative">
+          <div
+            className="relative flex w-full justify-between
+          md:block md:w-auto"
+          >
             <span className="absolute -inset-1">
-              <GoogleIcon className="size-8 rounded-full border border-white/20 bg-primary p-1" />
+              <GoogleIcon
+                className="size-6 rounded-full border border-white/20 bg-primary p-1
+              lg:size-8"
+              />
             </span>
             <Image
               src={user?.image ?? ''}
@@ -129,13 +137,34 @@ const Form: FC<Props> = ({ user, signatures }) => {
               height={128}
               quality={100}
             />
+            <div className="flex flex-col items-center justify-center gap-4 md:hidden">
+              <span
+                className={twMerge(
+                  'font-bold text-sm',
+                  content.length < 100
+                    ? 'text-white'
+                    : content.length < 250
+                      ? 'text-yellow-500'
+                      : 'text-red-500',
+                )}
+              >
+                {content.length} / 250
+              </span>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-primary transition-all hover:scale-105 hover:bg-solo hover:text-white"
+              >
+                Submit
+                <PencilSquareIcon className="size-4" />
+              </button>
+            </div>
           </div>
-          <div className="w-full space-y-2">
+          <div className="flex w-full flex-col gap-2">
             <h3
               className="text-sm font-bold text-white
         lg:text-base"
             >
-              {user ? user.name?.split(' ').splice(1) : 'Guest'}
+              {userName}
             </h3>
             <div className="flex flex-1 items-center justify-between gap-4">
               <textarea
@@ -144,7 +173,7 @@ const Form: FC<Props> = ({ user, signatures }) => {
                 className="w-full rounded-lg border border-white/30 bg-white/10 p-4 text-sm font-light text-white transition-all placeholder:text-white placeholder:text-opacity-70 focus:outline-none focus:ring-2 focus:ring-primary"
                 {...form.register('content')}
               />
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="hidden flex-col items-center justify-center gap-4 md:flex">
                 <span
                   className={twMerge(
                     'font-bold text-sm',
@@ -176,7 +205,7 @@ const Form: FC<Props> = ({ user, signatures }) => {
         {finalSignatures.map((signature) => (
           <div
             key={signature.createdAt?.toISOString()}
-            className="relative flex w-full gap-4 rounded-lg border border-white/20 bg-primary/50 p-4 shadow"
+            className="relative flex w-full gap-4 rounded-lg border border-white/20 bg-primary/50 p-4 shadow transition-all hover:border-solo"
           >
             <span className="absolute right-2 top-2 text-xs font-light text-gray-400">
               {signature.createdAt.toLocaleDateString('en-US', {
